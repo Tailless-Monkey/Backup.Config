@@ -1,10 +1,10 @@
 # Backup.Config
 Backup the configuration of common tools under the Linux system
 
-About using: 
+#About using: 
 All files are placed directly under the home directory 
 
-Description:
+#Description:
 .config
 This is the terminator configuration file.    
 
