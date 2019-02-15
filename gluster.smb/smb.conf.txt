@@ -1,0 +1,102 @@
+[global]
+include = /etc/samba/smb_netbios.conf
+include = /GLUSTER/cifs/smb_ctdb.conf
+include = /GLUSTER/cifs/smb_auth.conf
+include = /GLUSTER/cifs/smb_description.conf
+log file = /var/log/samba/log.%m
+max log size = 50
+guest account = nobody
+map to guest = bad password
+posix locking = no
+max protocol = SMB3
+dos charset = cp936
+unix charset = cp936
+#reset on zero vc = yes
+kernel share modes = no
+kernel oplocks = no
+stat cache = no
+
+include = /GLUSTER/cifs/smb_home.conf
+include = /GLUSTER/cifs/smb_share.conf
+
+
+#[gluster-mgnt_cntr_vol]
+#comment = For samba share of volume mgnt_cntr_vol
+#vfs objects = glusterfs
+#glusterfs:volume = mgnt_cntr_vol
+#glusterfs:logfile = /var/log/samba/glusterfs-mgnt_cntr_vol.%M.log
+#glusterfs:loglevel = 7
+#path = /
+#read only = no
+#guest ok = yes
+
+
+
+[root@node1 samba]# cat smb.conf20190215 
+[global]
+include = /etc/samba/smb_netbios.conf
+include = /GLUSTER/cifs/smb_ctdb.conf
+include = /GLUSTER/cifs/smb_auth.conf
+include = /GLUSTER/cifs/smb_description.conf
+log file = /var/log/samba/log.%m
+max log size = 50
+guest account = nobody
+map to guest = bad password
+posix locking = no
+max protocol = SMB3
+dos charset = cp936
+unix charset = cp936
+#reset on zero vc = yes
+kernel share modes = no
+kernel oplocks = no
+stat cache = no
+use sendfile = Yes
+max xmit = 65535
+vfs objects = aio_pthread
+aio read size = 1
+aio write size = 1
+max xmit = 1048576
+read raw = Yes
+write raw = Yes
+#---------------------------- AIO Settings --------------------------------
+		aio read size = 16384
+		aio write size = 16384
+
+# --------------------------- Global Overrides ----------------------------
+		max protocol = SMB3
+		kernel share modes = no
+		kernel change notify = no
+
+# ------------------------ XDFS Performance Tunings -------------------------
+#
+# The following options improve performance in the following respective
+# scenarios:
+#
+# - Large file sequential I/O
+# - Small file operations
+		posix locking = no
+		kernel oplocks = no
+		stat cache = no
+
+#------------Don't mess with permission bits to store DOS attributes-------
+		map archive = no
+		map hidden = no
+		map read only = no
+		map system = no
+		store dos attributes = yes
+
+# --------------------------- Printing Options -----------------------------
+#
+# The following options disable printing services for RHS by saying:
+#
+# - Do not load printers from /etc/printcap
+# - Shut down the RPC printing communications channel
+# - Disable the RPC-based printing wizard
+# - Prevent loading the CUPS back-end
+        load printers = no
+        disable spoolss = yes
+        show add printer wizard = no
+        printing = bsd
+
+include = /GLUSTER/cifs/smb_home.conf
+include = /GLUSTER/cifs/smb_share.conf
