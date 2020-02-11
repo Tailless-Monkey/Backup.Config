@@ -2,16 +2,34 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/hf/.oh-my-zsh
+export ZSH=/home/hf/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 #ZSH_THEME="robbyrussell"
 #ZSH_THEME="ys"
-ZSH_THEME="agnoster" 
+#ZSH_THEME="agnoster" 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
+
+ZSH_THEME="powerlevel9k/powerlevel9k"
+ 
+# 左侧栏目显示的要素
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time context vcs newline virtualenv dir status)
+
+# 右侧栏目显示的要素
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs)
+
+# 新起一行显示命令，推荐使用
+POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
+
+# 添加连接上下连接箭头更方便查看
+POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX="↱"
+POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
+
+# 字体设定，支持小图标显示
+POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Uncomment the following line to use hyphen-insensitive completion. Case
 # sensitive completion must be off. _ and - will be interchangeable.
@@ -84,3 +102,10 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# 终端名句欢迎banner
+fortune-zh
+
+# 虚拟环境支持
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh 
