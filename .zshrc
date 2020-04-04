@@ -19,7 +19,8 @@ ZSH_THEME="powerlevel9k/powerlevel9k"
 POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time context vcs newline virtualenv dir status)
 
 # 右侧栏目显示的要素
-POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs command_execution_time ip)
+
 
 # 新起一行显示命令，推荐使用
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
