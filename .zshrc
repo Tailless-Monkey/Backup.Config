@@ -2,16 +2,13 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/hf/.oh-my-zsh
+export ZSH="/home/landend/.oh-my-zsh"
 
-# Set name of the theme to load. Optionally, if you set this to "random"
-# it'll load a random theme each time that oh-my-zsh is loaded.
-# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-#ZSH_THEME="robbyrussell"
-#ZSH_THEME="ys"
-#ZSH_THEME="agnoster" 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# ZSH_THEME="robbyrussell"
 
 ZSH_THEME="powerlevel9k/powerlevel9k"
  
@@ -20,7 +17,6 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon time context vcs newline virtualenv d
 
 # 右侧栏目显示的要素
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(root_indicator background_jobs command_execution_time ip)
-
 
 # 新起一行显示命令，推荐使用
 POWERLEVEL9K_PROMPT_ADD_NEWLINE=true
@@ -32,15 +28,35 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="↳ "
 # 字体设定，支持小图标显示
 POWERLEVEL9K_MODE='nerdfont-complete'
 
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
+#缩短目录层级
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+#缩短目录策略：隐藏上层目录中间的字
+#POWERLEVEL9K_SHORTEN_STRATEGY="truncate_middle"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
 # HYPHEN_INSENSITIVE="true"
 
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
 # Uncomment the following line to change how often to auto-update (in days).
 # export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -61,13 +77,17 @@ POWERLEVEL9K_MODE='nerdfont-complete'
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
@@ -92,9 +112,6 @@ source $ZSH/oh-my-zsh.sh
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
-# ssh
-# export SSH_KEY_PATH="~/.ssh/rsa_id"
-
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
@@ -107,6 +124,14 @@ source $ZSH/oh-my-zsh.sh
 # 终端名句欢迎banner
 fortune-zh
 
+# kubectl
+export PATH=$PATH:/sanp/bin
+source <(kubectl completion zsh)
+# go
+export GOROOT="/usr/lib/go-1.14"
+export PATH=$PATH:$GOROOT/bin
+export GOPATH="/home/landend/go"
+
 # 虚拟环境支持
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/share/virtualenvwrapper/virtualenvwrapper.sh 
+source /usr/share/virtualenvwrapper/virtualenvwrapper.sh
